@@ -4,7 +4,6 @@ if __name__ == '__main__':
         depth_list = list(map(lambda x: int(x), my_in.readlines()))
 
     for i in range(len(depth_list)):
-        window_one_start = i
         if (sum(depth_list[i:i + 3])) < (sum(depth_list[i + 1:i + 4])):
             result += 1
 
