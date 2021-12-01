@@ -3,6 +3,7 @@ if __name__ == '__main__':
     x = 0
     with open("a_in.txt", "r") as my_in:
         for line in my_in:
+            # not using readlines to just cast it to int directly
             my_list.append(int(line))
 
     for i in range(len(my_list)):
