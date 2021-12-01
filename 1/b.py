@@ -1,4 +1,3 @@
-
 if __name__ == '__main__':
     my_list = []
     x = 0

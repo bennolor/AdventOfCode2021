@@ -1,4 +1,3 @@
-
 if __name__ == '__main__':
     a = float("inf")
     b = 0
