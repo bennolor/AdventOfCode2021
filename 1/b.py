@@ -1,13 +1,11 @@
 if __name__ == '__main__':
-    my_list = []
     x = 0
     with open("a_in.txt", "r") as my_in:
-        for line in my_in:
-            # not using readlines to just cast it to int directly
-            my_list.append(int(line))
+        depth_list = list(map(lambda x: int(x), my_in.readlines()))
 
-    for i in range(len(my_list)):
+    for i in range(len(depth_list)):
         window_one_start = i
-        if (sum(my_list[i:i + 3])) < (sum(my_list[i + 1:i + 4])):
+        if (sum(depth_list[i:i + 3])) < (sum(depth_list[i + 1:i + 4])):
             x += 1
+
     print(f"found {x} instances where the following window was bigger")
