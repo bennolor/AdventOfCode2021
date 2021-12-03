@@ -10,7 +10,7 @@ if __name__ == '__main__':
         x = 0
         num_breakpoint = math.ceil(len(nums) / 2)
         for num in nums:
-            if int(num):  # taking advantage of the auto vasting of int 1 and int 0
+            if int(num):  # taking advantage of the auto casting of int 1 and int 0 to bool
                 x += 1
                 if x >= num_breakpoint:  # should never be larger but ehh might as well implement it like this
                     return True
@@ -28,6 +28,3 @@ if __name__ == '__main__':
     gamma_s = iter_over_numbers(numbers, binary_len)
     epsilon_s = "".join(["1" if x == "0" else "0" for x in gamma_s])
     print(f"Gamma rate is {gamma_s}, Epsilon Rate is {epsilon_s}. Power consumption is thus {int(gamma_s, 2) * int(epsilon_s, 2)}")
-
-
-
