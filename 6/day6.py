@@ -38,6 +38,15 @@ def solution1(my_input: str) -> int:
         result += value
     return result
 
+def solution2(my_input: str) -> int:
+    swarm = get_swarm_from_my_input(my_input)
+    for x in range(256):
+        swarm = grow_swarm(swarm)
+    result = 0
+    for key, value in swarm.items():
+        result += value
+    return result
+
 
 if __name__ == '__main__':
     with open('in.txt', 'r') as in_file:
@@ -45,4 +54,4 @@ if __name__ == '__main__':
 
     print(f'after 80 days there are {solution1(lanternfish_swarm)} fishes')
 
-    print(f"After 80 Days there are {len(lanternfish_swarm)} fishes")
+    print(f"After 256 Days there are {solution2(lanternfish_swarm)} fishes")
