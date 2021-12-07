@@ -25,7 +25,7 @@ def solution1(puzzle_input: str) -> int:
 
 def solution2(puzzle_input: str) -> int:
     pos_list = get_crab_sub_position(puzzle_input)
-    goal_pos = round(sum(pos_list)/len(pos_list))
+    goal_pos = round(sum(pos_list)/len(pos_list)) # FUCK THIS. The  result here pre rounding is 489.501 Round gets 490. Advent of Code wants 489
 
     total_fuel = 0
     for crab_sub in pos_list:
