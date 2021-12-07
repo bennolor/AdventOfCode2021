@@ -20,7 +20,6 @@ def solution2(puzzle_input: str) -> int:
     # I did NOT come up with this. But I was frustrated that my solution was 1 off.
     goal_pos = round((sum(pos_list)/len(pos_list)) + ((len(pos_list) - 2 * len([x for x in pos_list if x < (sum(pos_list)/len(pos_list))]))/(2*len(pos_list))))
 
-
     return sum([sum(range(1, abs(x-goal_pos)+1)) for x in pos_list])
 
 
