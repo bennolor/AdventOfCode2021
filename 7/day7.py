@@ -5,13 +5,6 @@ def get_crab_sub_position(in_str: str) -> list:
     return [int(x) for x in in_str.split(',')]
 
 
-def calc_fuel_req(start: int, goal: int) -> int:
-    return abs(start - goal)
-
-def calc_fuel_crabgenieering(start:int, goal:int):
-    return sum(range(1, abs(start-goal)+1))
-
-
 def solution1(puzzle_input: str) -> int:
     pos_list = get_crab_sub_position(puzzle_input)
     goal_pos = int(statistics.median(pos_list))
