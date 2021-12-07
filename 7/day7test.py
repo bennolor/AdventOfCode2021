@@ -17,3 +17,7 @@ class TestAoC(unittest.TestCase):
         :return:
         """
         self.assertEqual(168, solution2(self.test_input))
+
+        with open('in.txt','r') as in_file:
+            line = in_file.readline()
+        self.assertEqual(104822130, solution2(line))
