@@ -8,6 +8,9 @@ def get_crab_sub_position(in_str: str) -> list:
 def calc_fuel_req(start: int, goal: int) -> int:
     return abs(start - goal)
 
+def calc_fuel_crabgenieering(start:int, goal:int):
+    return sum(range(1, abs(start-goal)+1))
+
 
 def solution1(puzzle_input: str) -> int:
     pos_list = get_crab_sub_position(puzzle_input)
@@ -21,7 +24,14 @@ def solution1(puzzle_input: str) -> int:
 
 
 def solution2(puzzle_input: str) -> int:
-    pass
+    pos_list = get_crab_sub_position(puzzle_input)
+    goal_pos = round(sum(pos_list)/len(pos_list))
+
+    total_fuel = 0
+    for crab_sub in pos_list:
+        total_fuel += calc_fuel_crabgenieering(crab_sub, goal_pos)
+
+    return total_fuel
 
 
 if __name__ == '__main__':
@@ -29,3 +39,4 @@ if __name__ == '__main__':
         puzzle_input = in_file.readline()
 
     print(f'The Crabs need {solution1(puzzle_input)} fuel to line up')
+    print(f'The Crabs need {solution2(puzzle_input)} fuel to line up using their crabsubs')
