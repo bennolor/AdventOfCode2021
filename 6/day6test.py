@@ -8,14 +8,14 @@ class TestAoC(unittest.TestCase):
 
     def test_part_1(self):
         """
-        Testing Part 1 of AoC Day 5 Challenge by using the given example
+        Testing Part 1 of AoC Day 6 Challenge by using the given example
         :return
         """
         self.assertEqual(5934, solution1(self.test_input))
 
     def test_part_2(self):
         """
-        Testing Part 1 of AoC Day 5 Challenge by using the given example
+        Testing Part 1 of AoC Day 6 Challenge by using the given example
         :return:
         """
         self.assertEqual(26984457539, solution2(self.test_input))
