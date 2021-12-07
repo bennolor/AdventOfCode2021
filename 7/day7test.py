@@ -10,3 +10,10 @@ class TestAoC(unittest.TestCase):
         :return:
         """
         self.assertEqual(37, solution1(self.test_input))
+
+    def test_part2(self):
+        """
+        Testing Part 2 of AoC Day 7
+        :return:
+        """
+        self.assertEqual(168, solution2(self.test_input))
