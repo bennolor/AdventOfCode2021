@@ -16,22 +16,14 @@ def solution1(puzzle_input: str) -> int:
     pos_list = get_crab_sub_position(puzzle_input)
     goal_pos = int(statistics.median(pos_list))
 
-    total_fuel = 0
-    for crab_sub in pos_list:
-        total_fuel += calc_fuel_req(crab_sub, goal_pos)
-
-    return total_fuel
+    return sum([abs(x - goal_pos) for x in pos_list])
 
 
 def solution2(puzzle_input: str) -> int:
     pos_list = get_crab_sub_position(puzzle_input)
     goal_pos = round(sum(pos_list)/len(pos_list)) # FUCK THIS. The  result here pre rounding is 489.501 Round gets 490. Advent of Code wants 489
 
-    total_fuel = 0
-    for crab_sub in pos_list:
-        total_fuel += calc_fuel_crabgenieering(crab_sub, goal_pos)
-
-    return total_fuel
+    return sum([sum(range(1, abs(x-goal_pos)+1)) for x in pos_list])
 
 
 if __name__ == '__main__':
