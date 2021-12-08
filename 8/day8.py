@@ -82,6 +82,8 @@ def solution1(puzzle_input: list) -> int:
 
 
 def solution2(puzzle_input: list) -> int:
+    # Insanity
+    # return sum(int(''.join([str({'abcefg':0,'cf':1,'acdeg':2,'acdfg':3,'bcdf':4,'abdfg':5,'abdefg':6,'acf':7,'abcdefg':8,'abcdfg':9}[''.join(sorted(r))]) for r in line.split('|')[1].translate(str.maketrans(next(p for p in [''.join(p) for p in permutations('abcdefg')] if all(set(o.translate(str.maketrans(p,'abcdefg'))) in [set(list(k)) for k in {'abcefg':0,'cf':1,'acdeg':2,'acdfg':3,'bcdf':4,'abdfg':5,'abdefg':6,'acf':7,'abcdefg':8,'abcdfg':9}] for o in re.findall(r'([a-g]+)\b',line))),'abcdefg')).split(' ')if r]))for line in puzzle_input)
     puzzle_input = parse_input(puzzle_input)
     result = 0
     for line in puzzle_input:
