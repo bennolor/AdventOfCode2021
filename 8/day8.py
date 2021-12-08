@@ -67,6 +67,8 @@ def sig_to_num(sig_dict: dict, singal: str) -> int:
 def solution1(puzzle_input: list) -> int:
     # This part in one Line(dont do this):
     # return sum([len([y for y in x if len(y) in [2,4,3,7]]) for x in ([u[1] for u in [[v.split() for v in w] for w in [z.split(' | ') for z in puzzle_input]]])])
+    # optimized one liner:
+    # return sum(sum(len(x) in {2,4,3,7} for x in line.split('|')[1].split()) for line in puzzle_input)
     puzzle_input = parse_input(puzzle_input)
     result = 0
     for line in puzzle_input:
