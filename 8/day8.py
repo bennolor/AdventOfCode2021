@@ -10,7 +10,6 @@ def get_seven_segment_digit(seg_str: str) -> int:
 
 
 def solution1(puzzle_input: list) -> int:
-    print(puzzle_input)
     puzzle_input = parse_input(puzzle_input)
     result = 0
     for line in puzzle_input:
