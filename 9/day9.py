@@ -1,7 +1,4 @@
-import math
 from functools import reduce
-
-import setuptools.wheel
 
 
 def parse_input(puzzle_input: list) -> list:
