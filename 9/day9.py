@@ -1,3 +1,9 @@
+import math
+from functools import reduce
+
+import setuptools.wheel
+
+
 def parse_input(puzzle_input: list) -> list:
     return [[y for y in x.rstrip()] for x in puzzle_input]
 
@@ -53,17 +59,63 @@ def get_low_points(height_map: list) -> list:
     return low_points
 
 
+def validate_coord(heightmap: list, coord: tuple) -> bool:
+    return len(heightmap) - 1 >= coord[1] >= 0 and len(heightmap[0]) - 1 >= coord[2] >= 0
+
+
+def basin_propagator(coord: tuple, heightmap: list, basin_coords=None) -> set():
+    if basin_coords is None:
+        basin_coords = set()
+
+    basin_coords.add(coord)
+    # check below
+    if validate_coord(heightmap, (0, coord[1] + 1, coord[2])):
+        new_coord = (heightmap[coord[1] + 1][coord[2]], coord[1] + 1, coord[2])
+        if new_coord[0] >= coord[0] and new_coord not in basin_coords and new_coord[0] != '9':
+            basin_coords = basin_propagator(new_coord, heightmap, basin_coords)
+    # check above
+    if validate_coord(heightmap, (0, coord[1] - 1, coord[2])):
+        new_coord = (heightmap[coord[1] - 1][coord[2]], coord[1] - 1, coord[2])
+        if new_coord[0] >= coord[0] and new_coord not in basin_coords and new_coord[0] != '9':
+            basin_coords = basin_propagator(new_coord, heightmap, basin_coords)
+    # check right
+    if validate_coord(heightmap, (0, coord[1], coord[2] + 1)):
+        new_coord = (heightmap[coord[1]][coord[2] + 1], coord[1], coord[2] + 1)
+        if new_coord[0] >= coord[0] and new_coord not in basin_coords and new_coord[0] != '9':
+            basin_coords = basin_propagator(new_coord, heightmap, basin_coords)
+    # check left
+    if validate_coord(heightmap, (0, coord[1], coord[2] - 1)):
+        new_coord = (heightmap[coord[1]][coord[2] - 1], coord[1], coord[2] - 1)
+        if new_coord[0] >= coord[0] and new_coord not in basin_coords and new_coord[0] != '9':
+            basin_coords = basin_propagator(new_coord, heightmap, basin_coords)
+
+    return basin_coords
+
+
+def get_basins(heightmap: list):
+    low_points = get_low_points(heightmap)
+    basins = []
+    for low_point in low_points:
+        basins.append(basin_propagator(low_point, heightmap))
+    return basins
+
+
 def solution1(puzzle_input: list) -> int:
     parsed_puzzle_input = parse_input(puzzle_input)
     low_points = get_low_points(parsed_puzzle_input)
-    print(low_points)
     low_points = map(lambda x: int(x[0]) + 1, low_points)
 
     return sum(low_points)
 
 
 def solution2(puzzle_input: list) -> int:
-    pass
+    parsed_puzzle_input = parse_input(puzzle_input)
+
+    basins = get_basins(parsed_puzzle_input)
+    basins = [len(basin) for basin in basins]
+    basins.sort(reverse=True)
+
+    return reduce((lambda x, y: x * y), basins[0:3])
 
 
 if __name__ == '__main__':
@@ -71,3 +123,4 @@ if __name__ == '__main__':
         aoc_input = input_file.readlines()
 
     print(f'the sum of the risk level is {solution1(aoc_input)}')
+    print(f'The sizes of the 3 largest Basins multiplied together is {solution2(aoc_input)}')
