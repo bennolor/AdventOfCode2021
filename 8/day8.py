@@ -1,5 +1,4 @@
 import itertools
-import shlex
 
 
 def parse_input(puzzle_input: list) -> list:
