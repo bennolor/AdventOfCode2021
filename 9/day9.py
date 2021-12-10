@@ -112,6 +112,7 @@ def solution2(puzzle_input: list) -> int:
     basins = [len(basin) for basin in basins]
     basins.sort(reverse=True)
 
+    # why not 'math.prod(basins[0:3])'? Dunno
     return reduce((lambda x, y: x * y), basins[0:3])
 
 
