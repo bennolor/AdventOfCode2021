@@ -61,6 +61,7 @@ def get_score(l: list):
         r += score_dict[c]
     return r
 
+
 def solution1(puzzle_input: list) -> int:
     fails = []
     for line in puzzle_input:
@@ -84,13 +85,12 @@ def solution2(puzzle_input: list) -> int:
 
     scores = [get_score(x) for x in fix_brackets]
 
-    if len(scores)%2 == 0:
+    if len(scores) % 2 == 0:
         raise ValueError
 
     scores.sort()
 
-    return scores[math.floor(len(scores)/2)]
-
+    return scores[math.floor(len(scores) / 2)]
 
 
 if __name__ == '__main__':
