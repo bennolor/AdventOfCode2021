@@ -11,3 +11,6 @@ class TestAoC(unittest.TestCase):
 
     def test_solution1(self):
         self.assertEqual(26397, solution1(self.test_input))
+
+    def test_solution2(self):
+        self.assertEqual(288957, solution2(self.test_input))
